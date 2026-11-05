@@ -72,3 +72,50 @@ document.getElementById("newsletterForm").addEventListener("submit", function(e)
 
   this.reset();
 });
+// Booking enquiry form
+const bookingForm = document.getElementById("bookingForm");
+
+if (bookingForm) {
+  bookingForm.addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    const message = document.getElementById("bookingMessage");
+    const submitButton = bookingForm.querySelector("button[type='submit']");
+
+    const booking = {
+      name: document.getElementById("customerName").value.trim(),
+      email: document.getElementById("customerEmail").value.trim(),
+      pickup: document.getElementById("pickup").value.trim(),
+      destination: document.getElementById("destination").value.trim(),
+      date: document.getElementById("travelDate").value,
+      time: document.getElementById("travelTime").value,
+      vehicle: document.getElementById("vehicle").value
+    };
+
+    submitButton.disabled = true;
+    message.textContent = "Submitting your enquiry...";
+
+    try {
+      const response = await fetch("/api/bookings", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(booking)
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.message || "Submission failed.");
+      }
+
+      message.textContent =
+        `Enquiry received! Reference: ${result.bookingId}`;
+      bookingForm.reset();
+
+    } catch (error) {
+      message.textContent = error.message;
+    } finally {
+      submitButton.disabled = false;
+    }
+  });
+}

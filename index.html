@@ -28,7 +28,7 @@
     <h1>TRAVEL IN<br><span>PURE LUXURY.</span></h1>
     <p>Experience elegance, comfort and excellence
     with London Wheels.</p>
-    <a href="#fleet" class="btn">EXPLORE OUR FLEET →</a>
+    <a href="#fleet" class="btn">RESERVE YOUR CHAUFFER →</a>
     <div class="slider">
       <button id="prev">←</button>
       <button id="next">→</button>
@@ -96,6 +96,66 @@
     <source src="promo.mp4" type="video/mp4">
   </video>
   <p class="note">Add your promotional video as promo.mp4.</p>
+</section>
+
+<section class="booking" id="booking">
+  <div class="booking-inner">
+    <p class="tagline">PRIVATE CHAUFFEUR SERVICE</p>
+    <h2>Bespoke Chauffeur Reservation</h2>
+    <p class="booking-intro">
+      Tell us about your journey. Our team will review your enquiry.
+    </p>
+
+    <form id="bookingForm">
+      <div class="booking-grid">
+        <label>
+          Full Name
+          <input type="text" id="customerName" placeholder="Your full name" required>
+        </label>
+
+        <label>
+          Email Address
+          <input type="email" id="customerEmail" placeholder="Your email" required>
+        </label>
+
+        <label>
+          Pickup Location
+          <input type="text" id="pickup" placeholder="Pickup address" required>
+        </label>
+
+        <label>
+          Destination
+          <input type="text" id="destination" placeholder="Where are you going?" required>
+        </label>
+
+        <label>
+          Travel Date
+          <input type="date" id="travelDate" required>
+        </label>
+
+        <label>
+          Pickup Time
+          <input type="time" id="travelTime" required>
+        </label>
+
+        <label class="full-width">
+          Preferred Vehicle
+          <select id="vehicle" required>
+            <option value="">Select a vehicle</option>
+            <option>Luxury Sedan</option>
+            <option>Premium SUV</option>
+            <option>Executive Class</option>
+          </select>
+        </label>
+      </div>
+
+      <button type="submit" class="booking-submit">
+        SUBMIT RESERVATION ENQUIRY →
+      </button>
+
+      <p id="bookingMessage" role="status"></p>
+    </form>
+  </div>
 </section>
 
 <section class="section newsletter" id="contact">
